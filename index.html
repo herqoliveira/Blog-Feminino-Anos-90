@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>..::✨ O Cantinho da Jéssica ✨::..</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -13,15 +15,16 @@
         <!-- Cabeçalho -->
         <header>
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2Rqb2N1amN5b25xZHJrcm04ZnZtYW1kZzVqdG0xYWZnNzhzN3h1eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pc5gIeUeQYSti/giphy.gif"
-                 alt="Borboleta Voando" class="butterfly">
+                alt="Borboleta Voando" class="butterfly">
             <h1>✨ O Cantinho da Jéssica ✨</h1>
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2Rqb2N1amN5b25xZHJrcm04ZnZtYW1kZzVqdG0xYWZnNzhzN3h1eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/pc5gIeUeQYSti/giphy.gif"
-                 alt="Borboleta Voando" class="butterfly mirrored">
+                alt="Borboleta Voando" class="butterfly mirrored">
         </header>
 
         <!-- Texto Rolante -->
         <div class="marquee-container">
-            <marquee>Bem-vinda ao meu mundo! Onde os sonhos e os segredos se encontram! Deixe um recado no meu Livro de Visitas!</marquee>
+            <marquee>Bem-vinda ao meu mundo! Onde os sonhos e os segredos se encontram! Deixe um recado no meu Livro de
+                Visitas!</marquee>
         </div>
 
         <!-- Layout Principal -->
@@ -30,6 +33,7 @@
             <!-- Sidebar -->
             <nav class="sidebar">
                 <h3>Menu Principal</h3>
+                <button class="btn-postar" id="abrirModalBtn">📝 Postar</button>
                 <ul>
                     <li><a href="#">Página Inicial</a></li>
                     <li><a href="#">Sobre Mim</a></li>
@@ -39,22 +43,20 @@
                     <li><a href="#">💌 Contato</a></li>
                 </ul>
 
-                <img src="https://i.gifer.com/ZZ5H.gif"
-                     alt="Coração Girando" class="spinning-heart">
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Coração Girando" class="spinning-heart">
 
                 <h3><span class="blink">NOVIDADE!</span></h3>
                 <p>Meu novo post sobre a minha banda favorita: Backstreet Boys!</p>
 
                 <h3>Livro de Visitas</h3>
                 <a href="#">
-                    <img src="https://text.gifgifs.com/animation/g/guestbook.gif"
-                         alt="Assine meu Livro de Visitas!">
+                    <img src="https://text.gifgifs.com/animation/g/guestbook.gif" alt="Assine meu Livro de Visitas!">
                 </a>
             </nav>
 
             <!-- Conteúdo Principal -->
             <main class="content">
-
+                <div id="postsContainer"></div>
                 <article>
                     <h2>Meu Último Post no Diário!</h2>
                     <p class="date">Postado em: 08 de Outubro de 1998</p>
@@ -62,27 +64,28 @@
                     <p>Oii gente! Tipo assim, hoje o dia foi MUITO legal! 🤩</p>
 
                     <p>
-                        Na escola, o Ricardo da 8ªB 
-                        <span style="color:red; font-weight:bold;">finalmente</span> 
+                        Na escola, o Ricardo da 8ªB
+                        <span style="color:red; font-weight:bold;">finalmente</span>
                         falou comigo! Ele pediu uma caneta emprestada.
                         Ai meu Deus, eu fiquei toda vermelha! Será que ele gosta de mim?
                         A minha melhor amiga, a Tati, acha que sim! Tomara! 🙏
                     </p>
 
                     <p>
-                        Depois da aula, fui para casa correndo ver o clipe novo dos 
-                        <span style="color:blue; font-weight:bold;">Backstreet Boys</span> 
+                        Depois da aula, fui para casa correndo ver o clipe novo dos
+                        <span style="color:blue; font-weight:bold;">Backstreet Boys</span>
                         na MTV! O Nick Carter é o meu preferido, claro! hihihi ^_^
                     </p>
 
                     <p>
-                        Agora tô aqui ouvindo Spice Girls no meu discman e escrevendo no meu diário... online! Que chique, né?!
+                        Agora tô aqui ouvindo Spice Girls no meu discman e escrevendo no meu diário... online! Que
+                        chique, né?!
                     </p>
                 </article>
 
                 <img src="https://www.gifmania.co.uk/web-design-animated-gifs/animated-dividers/glitter-dividers/glitter-line-7-animated-gif.gif"
-                     alt="Divisor Brilhante" class="divider">
-
+                    alt="Divisor Brilhante" class="divider">
+                <hr>
                 <article>
                     <h2>Um poema que eu fiz...</h2>
                     <p class="date">Postado em: 02 de Outubro de 1998</p>
@@ -109,6 +112,25 @@
         </footer>
 
     </div>
+    <!-- MODAL DE NOVO POST -->
+    <div id="modalPost" class="modal">
+        <div class="modal-content">
+
+            <span class="close" id="fecharModalBtn">&times;</span>
+
+            <h2>Novo Post</h2>
+
+            <label for="tituloPost">Título:</label>
+            <input type="text" id="tituloPost" placeholder="Digite o título...">
+
+            <label for="conteudoPost">Conteúdo:</label>
+            <textarea id="conteudoPost" placeholder="Escreva seu post aqui..."></textarea>
+
+            <button id="publicarBtn" class="btn-publicar">Publicar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
