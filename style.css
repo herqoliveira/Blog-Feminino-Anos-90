@@ -3,22 +3,22 @@ body {
     background-image: url('https://www.fg-a.com/backgrounds/pink-repeating-background-5.gif');
     background-attachment: fixed;
     font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", cursive;
-    color: #330033;
+    color: #660860; /* Roxo escuro */
     margin: 0;
     padding: 0;
 }
 
-/* O container principal que centraliza o site */
+/* O container principal */
 .container {
-    max-width: 900px; /* Largura máxima, mas pode encolher */
-    width: 95%; /* Um pouco de espaço nas laterais em telas menores */
+    max-width: 900px;
+    width: 95%;
     margin: 20px auto;
-    background-color: #FFCCFF;
-    border: 5px groove #FF00FF;
+    background-color: #FEE9A6; /* Amarelo claro */
+    border: 5px groove #FA5894; /* Rosa vibrante */
     padding: 10px;
 }
 
-/* Estilo do cabeçalho */
+/* Cabeçalho */
 header {
     text-align: center;
     padding-bottom: 10px;
@@ -28,10 +28,10 @@ header {
 }
 
 header h1 {
-    color: #990099;
+    color: #660860; /* Roxo escuro */
     font-family: "Times New Roman", Times, serif;
-    font-size: 2.5em; /* Usando 'em' para melhor adaptação */
-    text-shadow: 3px 3px 2px #ff99ff;
+    font-size: 2.5em;
+    text-shadow: 3px 3px 2px #FA5894; /* Rosa vibrante */
     margin: 0 15px;
 }
 
@@ -40,39 +40,39 @@ header h1 {
     height: auto;
 }
 .mirrored {
-    transform: scaleX(-1); /* Espelha a segunda borboleta */
+    transform: scaleX(-1);
 }
 
-/* Efeito do texto rolante */
+/* Marquee */
 .marquee-container {
-    background-color: #FFFF99;
-    color: #FF00FF;
+    background-color: #FEC0AB; /* Pêssego */
+    color: #660860; /* Roxo escuro */
     font-weight: bold;
     padding: 5px;
-    border: 2px dashed #990099;
+    border: 2px dashed #FA5894; /* Rosa vibrante */
 }
 
-/* Layout Principal com Flexbox */
+/* Layout principal */
 .main-layout {
     display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
-    gap: 15px; /* Espaço entre as colunas */
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 15px;
 }
 
-/* Barra lateral (Navegação) */
+/* Sidebar */
 .sidebar {
-    flex: 1; /* Permite que cresça */
-    min-width: 200px; /* Largura mínima */
-    background-color: #CCFFFF;
-    border: 2px inset #0099CC;
+    flex: 1;
+    min-width: 200px;
+    background-color: #9380B7; /* Lavanda roxa */
+    border: 2px inset #660860; /* Roxo escuro */
     padding: 10px;
     text-align: center;
 }
 
 .sidebar h3 {
-    color: #006699;
-    border-bottom: 1px solid #006699;
+    color: #FEE9A6; /* Amarelo claro */
+    border-bottom: 1px solid #FEE9A6;
     margin-top: 20px;
 }
 
@@ -83,12 +83,12 @@ header h1 {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #FF0099;
+    color: #FA5894; /* Rosa vibrante */
     font-weight: bold;
 }
 
 .sidebar ul li a:hover {
-    color: #990099;
+    color: #660860; /* Roxo escuro */
     text-decoration: underline;
 }
 
@@ -97,17 +97,17 @@ header h1 {
     margin-top: 15px;
 }
 
-/* Conteúdo Principal */
+/* Conteúdo */
 .content {
-    flex: 3; /* Ocupa 3x mais espaço que a sidebar */
-    min-width: 300px; /* Garante que não fique espremido demais */
+    flex: 3;
+    min-width: 300px;
     background-color: #FFFFFF;
     padding: 15px;
     border: 2px outset #CCCCCC;
 }
 
 .content h2 {
-    color: #FF66CC;
+    color: #FA5894; /* Rosa vibrante */
     font-family: "Arial Black", Gadget, sans-serif;
 }
 
@@ -118,8 +118,8 @@ header h1 {
 }
 
 .poem {
-    background-color: #FFFFAA;
-    border: 1px dotted #FFCC66;
+    background-color: #FEE9A6; /* Amarelo claro */
+    border: 1px dotted #FEC0AB; /* Pêssego */
     padding: 10px;
     margin: 10px 0;
     text-align: center;
@@ -135,11 +135,12 @@ footer {
     text-align: center;
     margin-top: 20px;
     padding-top: 10px;
-    border-top: 3px double #FF00FF;
+    border-top: 3px double #FA5894; /* Rosa vibrante */
     font-size: 0.8em;
+    color: #660860;
 }
 
-/* Animação para simular a tag <blink> */
+/* Blink */
 .blink {
     animation: blink-animation 1s steps(2, start) infinite;
 }
@@ -150,19 +151,17 @@ footer {
     }
 }
 
-
-/* --- RESPONSIVIDADE --- */
-/* Para telas com largura máxima de 768px (tablets e celulares) */
+/* Responsividade */
 @media (max-width: 768px) {
     .main-layout {
-        flex-direction: column; /* Coloca a sidebar em cima do conteúdo */
+        flex-direction: column;
     }
 
     header h1 {
-        font-size: 1.8em; /* Diminui a fonte do título */
+        font-size: 1.8em;
     }
 
     .butterfly {
-        width: 50px; /* Diminui as borboletas */
+        width: 50px;
     }
 }
