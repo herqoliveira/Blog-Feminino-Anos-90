@@ -1,3 +1,5 @@
+// ---------------- MODAL ----------------
+
 // Pega os elementos
 const abrirModalBtn = document.getElementById("abrirModalBtn");
 const modal = document.getElementById("modalPost");
@@ -19,14 +21,39 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+// ---------------- POSTS ----------------
+
 // Pega elementos do formulário
 const tituloPost = document.getElementById("tituloPost");
 const conteudoPost = document.getElementById("conteudoPost");
 const publicarBtn = document.getElementById("publicarBtn");
 const postsContainer = document.getElementById("postsContainer");
 
-// Ação do botão PUBLICAR
-publicarBtn.onclick = function () {
+// Função para carregar posts do servidor
+async function carregarPostsDoServidor() {
+    const resposta = await fetch("http://localhost:3000/posts");
+    const posts = await resposta.json();
+
+    postsContainer.innerHTML = ""; // limpar
+
+    posts.forEach(post => {
+        const artigo = document.createElement("article");
+        artigo.innerHTML = `
+            <h2>${post.titulo}</h2>
+            <p class="date">Postado por: ${post.autor} em ${post.data}</p>
+            <p>${post.conteudo}</p>
+            <hr>
+        `;
+        postsContainer.appendChild(artigo);
+    });
+}
+
+// Carregar posts ao iniciar o site
+window.onload = carregarPostsDoServidor;
+
+// Publicar novo post
+publicarBtn.onclick = async function () {
     const titulo = tituloPost.value.trim();
     const conteudo = conteudoPost.value.trim();
 
@@ -35,37 +62,27 @@ publicarBtn.onclick = function () {
         return;
     }
 
-    // Criar novo post em HTML
-    const novoPost = document.createElement("article");
+    // Enviar para o servidor
+    const resposta = await fetch("http://localhost:3000/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            titulo: titulo,
+            conteudo: conteudo
+        })
+    });
 
-    novoPost.innerHTML = `
-        <h2>${titulo}</h2>
-        <p class="date">Postado em: ${new Date().toLocaleString()}</p>
-        <p>${conteudo}</p>
-        <hr>
-    `;
+    const resultado = await resposta.json();
 
-    // Adicionar no topo
-    postsContainer.prepend(novoPost);
-    // Salvar no localStorage
-    function salvarPosts() {
-        localStorage.setItem("postsJéssica", postsContainer.innerHTML);
-    }
+    if (resultado.status === "ok") {
+        // Recarregar posts
+        carregarPostsDoServidor();
 
-    salvarPosts();
-
-
-    // Limpar modal
-    tituloPost.value = "";
-    conteudoPost.value = "";
-
-    // Fechar modal
-    modal.style.display = "none";
-};
-// Carregar posts ao abrir o site
-window.onload = function() {
-    const postsSalvos = localStorage.getItem("postsJéssica");
-    if (postsSalvos) {
-        postsContainer.innerHTML = postsSalvos;
+        // Limpar modal
+        tituloPost.value = "";
+        conteudoPost.value = "";
+        modal.style.display = "none";
+    } else {
+        alert("Erro ao publicar!");
     }
 };
