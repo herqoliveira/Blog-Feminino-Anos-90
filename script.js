@@ -32,7 +32,7 @@ const postsContainer = document.getElementById("postsContainer");
 
 // Função para carregar posts do servidor
 async function carregarPostsDoServidor() {
-    const resposta = await fetch("http://localhost:3000/posts");
+    const resposta = await fetch("https://blog-jessica-api.onrender.com/posts");
     const posts = await resposta.json();
 
     postsContainer.innerHTML = ""; // limpar
@@ -63,7 +63,7 @@ publicarBtn.onclick = async function () {
     }
 
     // Enviar para o servidor
-    const resposta = await fetch("http://localhost:3000/posts", {
+    const resposta = await fetch("https://blog-jessica-api.onrender.com/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
